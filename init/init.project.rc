@@ -1,12 +1,83 @@
 import /vendor/etc/init/hw/init.mtkgki.rc
 
 # MTK project .rc configure
+on early-init
+   write /proc/sys/kernel/printk_devkmsg ratelimited
+   export MEMTAG_OPTIONS off
+   exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -r -d /vendor/lib/modules zram
 
 on init
     mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw
     mkdir /storage/usbotg 0700 root root
 
+on late-init
+   exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules moto_mm moto_swap
+
+on charger
+    mkdir /mnt/makerlog 0775 root system
+    wait /dev/block/by-name/markerlog
+    mount ext4 /dev/block/by-name/markerlog /mnt/makerlog noatime nosuid nodev barrier=1,discard
+    chown root system /mnt/makerlog
+    chmod 0775 /mnt/makerlog
+
+    mkdir /mnt/makerlog/Logs 0775 root system
+
+
+    mkdir /mnt/vendor/persist_oem
+    wait  /dev/block/by-name/persist_oem
+    mount ext4 /dev/block/by-name/persist_oem  /mnt/vendor/persist_oem noatime nosuid nodev barrier=1,discard
+    restorecon_recursive /mnt/vendor/persist_oem
+
+    chown root system /mnt/makerlog
+    chmod 0771 /mnt/makerlog
+    mkdir /mnt/makerlog/Logs
+    chmod 0775 /mnt/makerlog/Logs
+    chown root system /mnt/makerlog/Logs
+
+    chown root system /mnt/vendor/persist_oem
+    chmod 0771 /mnt/vendor/persist_oem
+
 on post-fs-data
+
+    mkdir /mnt/makerlog 0775 root system
+    wait /dev/block/by-name/markerlog
+    mount ext4 /dev/block/by-name/markerlog /mnt/makerlog noatime nosuid nodev barrier=1,discard
+    chown root system /mnt/makerlog
+    chmod 0771 /mnt/makerlog
+
+    mkdir /mnt/persist2 0771 system system
+    wait /dev/block/by-name/markerlog2
+    mount ext4 /dev/block/by-name/markerlog2 /mnt/persist2 noatime nosuid nodev barrier=1,discard
+    chown system system /mnt/persist2
+    chmod 0771 /mnt/persist2
+
+    restorecon_recursive /mnt/makerlog  0775 root system
+    restorecon_recursive /mnt/persist2  0775 root system
+
+    mkdir /mnt/makerlog/Logs 0775 root system
+    mkdir /mnt/persist2/Logs 0775 root system
+
+#persist_oem
+    mkdir /mnt/vendor/persist_oem 0771 root system
+    wait /dev/block/by-name/persist_oem
+    mount ext4 /dev/block/by-name/persist_oem /mnt/vendor/persist_oem noatime nosuid nodev barrier=1,discard
+    chmod 0771 /mnt/vendor/persist_oem
+    chown root system /mnt/vendor/persist_oem
+    restorecon_recursive /mnt/vendor/persist_oem
+
+# Fingerprint
+    chown system system /sys/devices/platform/soc/11011000.spi1/spi_master/spi1/spi1.0/clk_enable
+    chmod 0660 /sys/devices/platform/soc/11011000.spi1/spi_master/spi1/spi1.0/clk_enable
+    chown system /sys/devices/platform/soc/11011000.spi1/spi_master/spi1/spi1.0/irq
+    chmod 0660 /sys/devices/platform/soc/11011000.spi1/spi_master/spi1/spi1.0/irq
+    chown system system /sys/devices/platform/soc/11011000.spi1/spi_master/spi1/spi1.0/hw_reset
+    chmod 0660 /sys/devices/platform/soc/11011000.spi1/spi_master/spi1/spi1.0/hw_reset
+    chown system system /sys/devices/platform/soc/11011000.spi1/spi_master/spi1/spi1.0/wakeup_enable
+    chmod 0660 /sys/devices/platform/soc/11011000.spi1/spi_master/spi1/spi1.0/wakeup_enable
+    chown system system /sys/devices/platform/soc/11011000.spi1/spi_master/spi1/spi1.0/compatible_all
+    chmod 0660 /sys/devices/platform/soc/11011000.spi1/spi_master/spi1/spi1.0/compatible_all
+    chown system system /sys/devices/platform/soc/11011000.spi1/spi_master/spi1/spi1.0/device_prepare
+    chmod 0660 /sys/devices/platform/soc/11011000.spi1/spi_master/spi1/spi1.0/device_prepare
 
 #Camera
     chmod 0660 /dev/MAINAF
@@ -37,6 +108,17 @@ on post-fs-data
     chmod 0660 /dev/spm
     chown system system /dev/spm
 
+#DISPLAY
+    mkdir /vendor/etc/displayconfig 0644 system system
+    chmod 0644 /vendor/etc/displayconfig
+    chown system system /vendor/etc/displayconfig
+
+# FOTA
+# FCNT:2020-09-03 FOTA GOTA ADD-S
+    mkdir /mnt/persist2/fota 0777 system system
+    chown system system /mnt/persist2/fota
+    chmod 0777 /mnt/persist2/fota
+# FCNT:2020-09-03 FOTA GOTA ADD-E
 
 on init
     # Refer to http://source.android.com/devices/tech/storage/index.html
@@ -59,3 +141,36 @@ on property:sys.boot_completed=1
     write /sys/kernel/tracing/instances/mmstat/buffer_size_kb 16
     write /sys/kernel/tracing/instances/mmstat/events/mmstat/enable 1
     write /sys/kernel/tracing/instances/mmstat/tracing_on 1
+
+#Sensor
+    chmod 0666 /dev/hf_manager
+
+#smart pa calibration  support factory mode
+    chown system system /mnt/vendor/persist/
+    chmod 777 /mnt/vendor/persist/
+    chmod 777 /mnt/vendor/persist/factory/audio/aw_cali.bin
+    mkdir /mnt/vendor/persist/factory 0771
+    mkdir /mnt/vendor/persist/factory/audio/  0771
+    chown system system /mnt/vendor/persist/factory/audio/
+
+#vib f0 calibration
+    mkdir /mnt/vendor/persist/factory/vib/  0771
+    chown system system /mnt/vendor/persist/factory/vib/
+    chown system system /sys/class/leds/aw_vibrator/state
+    chown system system /sys/class/leds/aw_vibrator/activate
+    chown system system /sys/class/leds/aw_vibrator/duration
+    chown system system /sys/class/leds/aw_vibrator/f0_save
+    chown system system /sys/class/leds/aw_vibrator/brightness
+    chown system system /sys/class/leds/aw_vibrator/trigger
+    chmod 0644 /sys/class/leds/aw_vibrator/state
+    chmod 0644 /sys/class/leds/aw_vibrator/activate
+    chmod 0644 /sys/class/leds/aw_vibrator/duration
+    chmod 0644 /sys/class/leds/aw_vibrator/brightness
+    chmod 0644 /sys/class/leds/aw_vibrator/f0_save
+    chmod 0644 /sys/class/leds/aw_vibrator/trigger
+    # Yamato code for AN7020A-1409 added by yezesong at 2024-02-20 start
+    chmod 0644 /sys/class/leds/aw_vibrator/gain
+    chown system system /sys/class/leds/aw_vibrator/gain
+    # Yamato code for AN7020A-1409 added by yezesong at 2024-02-20 end
+    chmod 0664 /sys/class/leds/aw_vibrator/cam_status
+    chown system system /sys/class/leds/aw_vibrator/cam_status

@@ -18,7 +18,7 @@ from extract_utils.main import (
 )
 
 namespace_imports = [
-    'device/motorola/cancunf',
+    'device/fcnt/itc',
     'hardware/mediatek',
     'hardware/mediatek/libmtkperf_client',
 ]
@@ -35,8 +35,8 @@ lib_fixups: lib_fixups_user_type = {
 
 
 blob_fixups: blob_fixups_user_type = {
-    'system_ext/priv-app/ImsService/ImsService.apk': blob_fixup()
-        .apktool_patch('ims-patches'),
+    #'system_ext/priv-app/ImsService/ImsService.apk': blob_fixup()
+    #    .apktool_patch('ims-patches'),
     ('system_ext/etc/init/init.vtservice.rc', 'vendor/etc/init/android.hardware.neuralnetworks-shim-service-mtk.rc'): blob_fixup()
         .regex_replace('start', 'enable'),
     'system_ext/lib64/libsource.so': blob_fixup()
@@ -79,8 +79,8 @@ blob_fixups: blob_fixups_user_type = {
 }  # fmt: skip
 
 module = ExtractUtilsModule(
-    'cancunf',
-    'motorola',
+    'itc',
+    'fcnt',
     blob_fixups=blob_fixups,
     lib_fixups=lib_fixups,
     namespace_imports=namespace_imports,

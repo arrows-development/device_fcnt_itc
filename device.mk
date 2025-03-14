@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/motorola/cancunf
+DEVICE_PATH := device/fcnt/itc
 
 # Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
@@ -105,9 +105,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
 
-# Dex-pre-opt exclusions
-$(call add-product-dex-preopt-module-config,MotoSignatureApp,disable)
-
 # Display
 PRODUCT_PACKAGES += \
     android.frameworks.displayservice@1.0.vendor \
@@ -137,14 +134,9 @@ PRODUCT_PACKAGES += \
 
 # Felica 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/felica/retjp/common.cfg:$(TARGET_COPY_OUT_PRODUCT)/etc/felica/common.cfg \
-    $(LOCAL_PATH)/configs/felica/retjp/mfm.cfg:$(TARGET_COPY_OUT_PRODUCT)/etc/felica/mfm.cfg \
-    $(LOCAL_PATH)/configs/felica/retjp/mfs.cfg:$(TARGET_COPY_OUT_PRODUCT)/etc/felica/mfs.cfg
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/felica/ymobile/common.cfg:$(TARGET_COPY_OUT_PRODUCT)/etc/felica_ymobile/common.cfg \
-    $(LOCAL_PATH)/configs/felica/ymobile/mfm.cfg:$(TARGET_COPY_OUT_PRODUCT)/etc/felica_ymobile/mfm.cfg \
-    $(LOCAL_PATH)/configs/felica/ymobile/mfs.cfg:$(TARGET_COPY_OUT_PRODUCT)/etc/felica_ymobile/mfs.cfg
+    $(LOCAL_PATH)/configs/felica/kddi/common.cfg:$(TARGET_COPY_OUT_PRODUCT)/etc/felica/common.cfg \
+    $(LOCAL_PATH)/configs/felica/kddi/mfm.cfg:$(TARGET_COPY_OUT_PRODUCT)/etc/felica/mfm.cfg \
+    $(LOCAL_PATH)/configs/felica/kddi/mfs.cfg:$(TARGET_COPY_OUT_PRODUCT)/etc/felica/mfs.cfg
 
 # FM Radio
 PRODUCT_PACKAGES += \
@@ -176,10 +168,6 @@ PRODUCT_PACKAGES += \
     fstab.mt6855.vendor_ramdisk \
     init_connectivity.rc \
     init.connectivity.common.rc \
-    init.cancunf.sku.rc \
-    init.mmi.chipset.rc \
-    init.mmi.overlay.rc \
-    init.mmi.rc \
     init.modem.rc \
     init.mt6855.rc \
     init.mt6855.power.rc \
@@ -190,11 +178,6 @@ PRODUCT_PACKAGES += \
     init.recovery.mt6855.rc \
     init.sensor_2_0.rc \
     ueventd.mt6855.rc
-
-# Keylayouts
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/configs/idc/,$(TARGET_COPY_OUT_VENDOR)/usr/idc) \
-    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/configs/keylayout/,$(TARGET_COPY_OUT_VENDOR)/usr/keylayout)
 
 # Keymaster / Keymint
 PRODUCT_PACKAGES += \
@@ -210,7 +193,7 @@ PRODUCT_PACKAGES += \
 
 # Light
 PRODUCT_PACKAGES += \
-    android.hardware.lights-service.cancunf
+    android.hardware.lights-service.itc
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -225,10 +208,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml
-
-# MotoActions
-PRODUCT_PACKAGES += \
-    MotoActions
 
 # Neural Networks
 PRODUCT_PACKAGES += \
@@ -253,53 +232,26 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml
 
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/nfc/libnfc-nxp_220.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp_220.conf
-
-DEVICE_UNAVAIL_NFC_SKUS := b d
-DEVICE_NFC_SKUS := de e
+    $(DEVICE_PATH)/configs/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
 
 PRODUCT_COPY_FILES += \
-$(foreach DEVICE_SKU, $(DEVICE_UNAVAIL_NFC_SKUS), \
-    $(DEVICE_PATH)/configs/permissions/unavail.android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_$(DEVICE_SKU)/unavail.android.hardware.nfc.hce.xml \
-    $(DEVICE_PATH)/configs/permissions/unavail.android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_$(DEVICE_SKU)/unavail.android.hardware.nfc.hcef.xml \
-    $(DEVICE_PATH)/configs/permissions/unavail.android.hardware.nfc.uicc.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_$(DEVICE_SKU)/unavail.android.hardware.nfc.uicc.xml \
-    $(DEVICE_PATH)/configs/permissions/unavail.android.hardware.nfc.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_$(DEVICE_SKU)/unavail.android.hardware.nfc.xml)
-
-PRODUCT_COPY_FILES += \
-$(foreach DEVICE_NFC_SKU, $(DEVICE_NFC_SKUS), \
-    frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_$(DEVICE_NFC_SKU)/android.hardware.nfc.ese.xml \
-    frameworks/native/data/etc/android.hardware.se.omapi.ese.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_$(DEVICE_NFC_SKU)/android.hardware.se.omapi.ese.xml)
+    frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/android.hardware.nfc.ese.xml \
+    frameworks/native/data/etc/android.hardware.se.omapi.ese.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/android.hardware.se.omapi.ese.xml
 
 # Overlay
 PRODUCT_PACKAGES += \
-    BesLoudnessOverlayCancunf \
-    CarrierConfigOverlayCancunf \
-    EsimOverlayCancunf \
-    FrameworksResOverlayCancunf \
-    FrameworksResOverlayCancunfXT2343-1 \
-    FrameworksResOverlayCancunfXT2343-2 \
-    NfcResOverlayCancunf \
-    PowerOffAlarmOverlayCancunf \
-    SettingsOverlayCancunf \
-    SettingsProviderOverlayCancunf \
-    SettingsProviderOverlayCancunpXT2431-1 \
-    SettingsProviderOverlayCancunpXT2431-2 \
-    SettingsProviderOverlayCancunpXT2431-3 \
-    SystemUIOverlayCancunf \
-    TelephonyOverlayCancunf \
-    TetheringConfigResOverlayCancunf \
-    WifiResOverlayCancunf \
-    WifiResOverlayCancunpXT2431-1 \
-    WifiResOverlayCancunpXT2431-3
-
-PRODUCT_PACKAGES += \
-    RegulatoryOverlayXT2343-1 \
-    RegulatoryOverlayXT2343-2 \
-    RegulatoryOverlayXT2343-4 \
-    RegulatoryOverlayXT2343-5 \
-    RegulatoryOverlayXT2431-1 \
-    RegulatoryOverlayXT2431-2 \
-    RegulatoryOverlayXT2431-3
+    BesLoudnessOverlayItc \
+    CarrierConfigOverlayItc \
+    EsimOverlayItc \
+    FrameworksResOverlayItc \
+    NfcResOverlayItc \
+    PowerOffAlarmOverlayItc \
+    SettingsOverlayItc \
+    SettingsProviderOverlayItc \
+    SystemUIOverlayItc \
+    TelephonyOverlayItc \
+    TetheringConfigResOverlayItc \
+    WifiResOverlayItc
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -370,7 +322,6 @@ PRODUCT_PACKAGES += \
     vendor.mediatek.hardware.mtkpower@1.2.vendor
 
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/powerhint-cancunp.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint-cancunp.json \
     $(DEVICE_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
 # Power Off Alarm
@@ -378,19 +329,11 @@ PRODUCT_PACKAGES += \
     PowerOffAlarm
 
 # Sensors
-PRODUCT_PACKAGES += \
-    android.hardware.sensors@2.1-service.cancunf-multihal
+#PRODUCT_PACKAGES += \
+#    android.hardware.sensors@2.1-service.itc-multihal
 
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 33
-
-# SKU
-# Variant Properties
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,product.*.prop,$(DEVICE_PATH)/configs/properties/sku/,$(TARGET_COPY_OUT_PRODUCT))
-
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,vendor.*.prop,$(DEVICE_PATH)/configs/properties/sku/,$(TARGET_COPY_OUT_VENDOR))
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
@@ -408,8 +351,8 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/thermal/thermal_info_config.json:$(TARGET_COPY_OUT_VENDOR)/etc/thermal_info_config.json
 
 # Touch
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.cancunf
+#PRODUCT_PACKAGES += \
+#    vendor.lineage.touch@1.0-service.itc
 
 # USB
 $(call soong_config_set,android_hardware_mediatek_usb,audio_accessory_supported,true)
@@ -443,5 +386,4 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(DEVICE_PATH)/configs/wifi/,$(TARGET_COPY_OUT_VENDOR)/etc/wifi)
 
 # Inherit the proprietary files
-$(call inherit-product, vendor/motorola/cancunf/cancunf-vendor.mk)
-$(call inherit-product, vendor/motorola/cancunf-motcamera/cancunf-motcamera-vendor.mk)
+$(call inherit-product, vendor/fcnt/itc/itc-vendor.mk)

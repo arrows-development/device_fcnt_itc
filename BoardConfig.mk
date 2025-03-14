@@ -4,8 +4,10 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/motorola/cancunf
-KERNEL_PATH := device/motorola/cancunf-kernel
+BUILD_BROKEN_DUP_RULES := true
+
+DEVICE_PATH := device/fcnt/itc
+KERNEL_PATH := device/fcnt/itc-kernel
 
 # Architecture
 TARGET_ARCH := arm64
@@ -22,17 +24,14 @@ TARGET_2ND_CPU_VARIANT := generic
 TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a55
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := cancunf
+TARGET_BOOTLOADER_BOARD_NAME := mt6855
 TARGET_NO_BOOTLOADER := true
 
 # Board Info
 TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
 
 # Display
-TARGET_SCREEN_DENSITY := 400
-
-# Filesystem
-TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/configs/mot_aids.fs
+TARGET_SCREEN_DENSITY := 320
 
 # HIDL
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
@@ -44,20 +43,17 @@ DEVICE_MATRIX_FILE := $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml
 
 # Kernel
 BOARD_BOOT_HEADER_VERSION := 4
-BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_OFFSET := 0x40000000
-BOARD_KERNEL_PAGESIZE := 0x00001000
-BOARD_TAGS_OFFSET := 0x47c80000
-BOARD_RAMDISK_OFFSET := 0x66f00000
+BOARD_KERNEL_BASE := 0x3fff8000
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_TAGS_OFFSET := 0x07c88000
+BOARD_RAMDISK_OFFSET := 0x26f08000
 BOARD_RAMDISK_USE_LZ4 := true
 
 BOARD_KERNEL_CMDLINE += \
     bootopt=64S3,32N2,64N2
 
 BOARD_MKBOOTIMG_ARGS += \
-    --dtb_offset $(BOARD_TAGS_OFFSET) \
     --header_version $(BOARD_BOOT_HEADER_VERSION) \
-    --kernel_offset $(BOARD_KERNEL_OFFSET) \
     --ramdisk_offset $(BOARD_RAMDISK_OFFSET) \
     --tags_offset $(BOARD_TAGS_OFFSET)
 
@@ -65,7 +61,7 @@ BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_KERNEL_IMAGE_NAME := Image.gz
 
 TARGET_NO_KERNEL_OVERRIDE := true
-TARGET_KERNEL_SOURCE := device/motorola/cancunf-kernel/kernel-headers
+TARGET_KERNEL_SOURCE := device/fcnt/itc-kernel/kernel-headers
 
 LOCAL_KERNEL := $(KERNEL_PATH)/$(BOARD_KERNEL_IMAGE_NAME)
 PRODUCT_COPY_FILES += \
@@ -123,10 +119,10 @@ TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 TARGET_COPY_OUT_PRODUCT := product
 
-BOARD_SUPER_PARTITION_SIZE := 6476005376
-BOARD_SUPER_PARTITION_GROUPS := motorola_dynamic_partitions
-BOARD_MOTOROLA_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext vendor vendor_dlkm product
-BOARD_MOTOROLA_DYNAMIC_PARTITIONS_SIZE := 6471811072
+BOARD_SUPER_PARTITION_SIZE := 10200547328
+BOARD_SUPER_PARTITION_GROUPS := fcnt_dynamic_partitions
+BOARD_FCNT_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext vendor vendor_dlkm product
+BOARD_FCNT_DYNAMIC_PARTITIONS_SIZE := 6471811072
 
 BOARD_USES_METADATA_PARTITION := true
 
@@ -150,7 +146,7 @@ TARGET_USERIMAGES_USE_F2FS := true
 ENABLE_VENDOR_RIL_SERVICE := true
 
 # Security patch level
-BOOT_SECURITY_PATCH := 2025-01-01
+BOOT_SECURITY_PATCH := 2024-05-01
 VENDOR_SECURITY_PATCH := $(BOOT_SECURITY_PATCH)
 
 # Sepolicy
@@ -158,15 +154,6 @@ include device/mediatek/sepolicy_vndr/SEPolicy.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
-
-# SKU
-ODM_MANIFEST_SKUS += b d de dn e n
-ODM_MANIFEST_B_FILES := $(DEVICE_PATH)/configs/vintf/sku/manifest_b.xml
-ODM_MANIFEST_D_FILES := $(DEVICE_PATH)/configs/vintf/sku/manifest_d.xml
-ODM_MANIFEST_DE_FILES := $(DEVICE_PATH)/configs/vintf/sku/manifest_de.xml
-ODM_MANIFEST_DN_FILES := $(DEVICE_PATH)/configs/vintf/sku/manifest_dn.xml
-ODM_MANIFEST_E_FILES := $(DEVICE_PATH)/configs/vintf/sku/manifest_e.xml
-ODM_MANIFEST_N_FILES := $(DEVICE_PATH)/configs/vintf/sku/manifest_n.xml
 
 # Verified Boot
 BOARD_AVB_ENABLE := true
@@ -183,8 +170,7 @@ BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := 17
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
 
 # Inherit the proprietary files
-include vendor/motorola/cancunf/BoardConfigVendor.mk
-include vendor/motorola/cancunf-motcamera/BoardConfigVendor.mk
+include vendor/fcnt/itc/BoardConfigVendor.mk
 
 # Wifi
 WPA_SUPPLICANT_VERSION := VER_0_8_X

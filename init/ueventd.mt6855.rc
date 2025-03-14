@@ -1,3 +1,4 @@
+#change partition permission
 # eMMC only
 /dev/block/mmcblk0                               0660    root    system
 /dev/block/mmcblk0boot0                          0660    root    system
@@ -26,9 +27,6 @@
 /dev/block/by-name/md1dsp    0660    root    system
 /dev/block/by-name/boot_para 0640    root    system
 
-# Add device block for MISC
-/dev/block/by-name/misc      0660   root     system
-
 # OTP
 /dev/otp                  0660   system     system
 /dev/block/by-name/otp       0660    root    system
@@ -54,7 +52,6 @@
 /dev/gps2scp              0660   gps        gps
 /dev/gps_pwr              0660   gps        gps
 /dev/fw_log_gps           0660   gps        gps
-
 # ANT
 /dev/stpant               0660   system     system
 
@@ -138,12 +135,11 @@
 /dev/irtx                 0660   system     system
 /dev/lirc*                0660   root       system
 /dev/ir-learning          0660   system     system
-
 # SGX device node
 /dev/pvrsrvkm             0666   root       root
 /dev/pvr_sync             0666   root       root
 
-# LED
+
 /sys/devices/platform/leds-mt65xx/leds/green   delay_on      0664  system   system
 /sys/devices/platform/leds-mt65xx/leds/green   delay_off      0664  system   system
 /sys/devices/platform/leds-mt65xx/leds/red   delay_on      0664  system   system
@@ -194,27 +190,3 @@
 
 #MTK In-House TEE
 /dev/ttyACM0              0660   radio      radio
-
-#  chipone  fingerprint
-/dev/fpsensor  0660    system     system
-
-#  egis  fingerprint
-/dev/esfp0  0660    system     system
-
-# goodix fingerprint
-/dev/goodix_fp  0660    system     system
-
-# set permission for fpc  fingerprint
-/sys/class/fingerprint/fpc_spi   wakeup_enable   0660     system    system
-/sys/class/fingerprint/fpc_spi   irq             0660     system    system
-/sys/class/fingerprint/fpc_spi   clk_enable      0660     system    system
-/sys/class/fingerprint/fpc_spi   hw_enable       0660     system    system
-/sys/class/fingerprint/fpc_spi   hw_reset        0660     system    system
-/sys/class/fingerprint/fpc_spi   irq_enable      0660     system    system
-/sys/class/fingerprint/fpc_spi   vendor          0660     system    system
-/sys/class/fingerprint/fpc_spi   modalias        0660     system    system
-
-
-# change permission for some capsensor nodes
-/sys/class/sensors/Moto\ CapSense\ Ch*   enable       0660    root    input
-/sys/class/sensors/Moto\ CapSense\ Ch*   poll_delay   0660    root    input
