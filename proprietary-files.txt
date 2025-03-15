@@ -1023,7 +1023,7 @@ product/etc/sysconfig/euicc.xml
 system/priv-app/EuiccGoogle/EuiccGoogle.apk;PRESIGNED
 
 # Felica
-product/app/MobileFeliCaClient/MobileFeliCaClient.apk;PRESIGNED;SKIPAPKCHECKS
+product/app/MobileFeliCaClient/MobileFeliCaClient.apk;PRESIGNED
 
 # Fingerprint
 system_ext/etc/permissions/com.fingerprints.extension.xml
