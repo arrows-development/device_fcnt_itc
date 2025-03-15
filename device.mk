@@ -165,10 +165,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     fstab.emmc \
     fstab.emmc.ramdisk \
-    fstab.emmc.vendor_ramdisk \
     fstab.mt6855 \
     fstab.mt6855.ramdisk \
-    fstab.mt6855.vendor_ramdisk \
     init_connectivity.rc \
     init.connectivity.common.rc \
     init.modem.rc \
@@ -181,6 +179,10 @@ PRODUCT_PACKAGES += \
     init.recovery.mt6855.rc \
     init.sensor_2_0.rc \
     ueventd.mt6855.rc
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init/fstab.emmc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.emmc \
+    $(LOCAL_PATH)/init/fstab.mt6855:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.mt6855
 
 # Keymaster / Keymint
 PRODUCT_PACKAGES += \
