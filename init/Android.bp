@@ -11,6 +11,14 @@ sh_binary {
 }
 
 prebuilt_etc {
+    name: "fstab.emmc",
+    src: "fstab.emmc",
+    vendor: true,
+    ramdisk_available: true,
+    vendor_ramdisk_available: true,
+}
+
+prebuilt_etc {
     name: "fstab.mt6855",
     src: "fstab.mt6855",
     vendor: true,

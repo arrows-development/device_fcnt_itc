@@ -163,6 +163,9 @@ PRODUCT_COPY_FILES += \
 
 # Init
 PRODUCT_PACKAGES += \
+    fstab.emmc \
+    fstab.emmc.ramdisk \
+    fstab.emmc.vendor_ramdisk \
     fstab.mt6855 \
     fstab.mt6855.ramdisk \
     fstab.mt6855.vendor_ramdisk \
