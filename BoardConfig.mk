@@ -52,6 +52,9 @@ BOARD_RAMDISK_USE_LZ4 := true
 BOARD_KERNEL_CMDLINE += \
     bootopt=64S3,32N2,64N2
 
+BOARD_KERNEL_CMDLINE += \
+    androidboot.selinux=permissive
+
 BOARD_MKBOOTIMG_ARGS += \
     --header_version $(BOARD_BOOT_HEADER_VERSION) \
     --ramdisk_offset $(BOARD_RAMDISK_OFFSET) \
