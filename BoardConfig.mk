@@ -50,7 +50,8 @@ BOARD_RAMDISK_OFFSET := 0x26f08000
 BOARD_RAMDISK_USE_LZ4 := true
 
 BOARD_KERNEL_CMDLINE += \
-    bootopt=64S3,32N2,64N2
+    bootopt=64S3,32N2,64N2 \
+    androidboot.init_fatal_reboot_target=recovery
 
 BOARD_KERNEL_CMDLINE += \
     androidboot.selinux=permissive
