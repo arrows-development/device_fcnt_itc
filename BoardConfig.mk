@@ -103,6 +103,8 @@ AB_OTA_PARTITIONS += \
     vendor_boot \
     vendor_dlkm
 
+include vendor/fcnt/itc-firmware/BoardConfigFirmware.mk
+
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
