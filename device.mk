@@ -334,8 +334,8 @@ PRODUCT_PACKAGES += \
     PowerOffAlarm
 
 # Sensors
-#PRODUCT_PACKAGES += \
-#    android.hardware.sensors@2.1-service.itc-multihal
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@2.1-service.itc-multihal
 
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 33
