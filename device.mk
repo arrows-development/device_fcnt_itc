@@ -168,17 +168,36 @@ PRODUCT_PACKAGES += \
     fstab.mt6855 \
     fstab.mt6855.ramdisk \
     init_connectivity.rc \
+    init.aee.rc \
+    init.cgroup.rc \
     init.connectivity.common.rc \
+    init.connectivity.rc \
+    init.insmod.sh \
     init.modem.rc \
     init.mt6855.rc \
     init.mt6855.power.rc \
     init.mt6855.usb.rc \
     init.mtkgki.rc \
-    init.oem.hw.sh \
     init.project.rc \
     init.recovery.mt6855.rc \
     init.sensor_2_0.rc \
-    ueventd.mt6855.rc
+    factory_init.connectivity.common.rc \
+    factory_init.connectivity.rc \
+    factory_init.project.rc \
+    factory_init.rc \
+    meta_init.connectivity.common.rc \
+    meta_init.connectivity.rc \
+    meta_init.modem.rc \
+    meta_init.project.rc \
+    meta_init.rc \
+    meta_init.vendor.rc \
+    multi_init.rc \
+    ueventd.mtk.rc \
+    meta_init.system.rc \
+    vendor_init_as_system.rc
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/modules/init.insmod.mt6855.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/init.insmod.mt6855.cfg
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init/fstab.emmc:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.emmc \

@@ -5,17 +5,9 @@
 //
 
 sh_binary {
-    name: "init.oem.hw.sh",
-    src: "init.oem.hw.sh",
+    name: "init.insmod.sh",
+    src: "init.insmod.sh",
     vendor: true,
-}
-
-prebuilt_etc {
-    name: "fstab.emmc",
-    src: "fstab.emmc",
-    vendor: true,
-    ramdisk_available: true,
-    vendor_ramdisk_available: true,
 }
 
 prebuilt_etc {
@@ -27,15 +19,23 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "init_connectivity.rc",
-    src: "init_connectivity.rc",
+    name: "fstab.emmc",
+    src: "fstab.emmc",
+    vendor: true,
+    ramdisk_available: true,
+    vendor_ramdisk_available: true,
+}
+
+prebuilt_etc {
+    name: "init.aee.rc",
+    src: "init.aee.rc",
     relative_install_path: "init/hw",
     vendor: true,
 }
 
 prebuilt_etc {
-    name: "init.mt6855.power.rc",
-    src: "init.mt6855.power.rc",
+    name: "init.cgroup.rc",
+    src: "init.cgroup.rc",
     relative_install_path: "init/hw",
     vendor: true,
 }
@@ -43,6 +43,20 @@ prebuilt_etc {
 prebuilt_etc {
     name: "init.connectivity.common.rc",
     src: "init.connectivity.common.rc",
+    relative_install_path: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.connectivity.rc",
+    src: "init.connectivity.rc",
+    relative_install_path: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init_connectivity.rc",
+    src: "init_connectivity.rc",
     relative_install_path: "init/hw",
     vendor: true,
 }
@@ -57,6 +71,13 @@ prebuilt_etc {
 prebuilt_etc {
     name: "init.mt6855.rc",
     src: "init.mt6855.rc",
+    relative_install_path: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.mt6855.power.rc",
+    src: "init.mt6855.power.rc",
     relative_install_path: "init/hw",
     vendor: true,
 }
@@ -97,8 +118,100 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "ueventd.mt6855.rc",
-    filename: "ueventd.rc",
-    src: "ueventd.mt6855.rc",
+    name: "factory_init.connectivity.common.rc",
+    src: "factory_init.connectivity.common.rc",
+    relative_install_path: "init/hw",
     vendor: true,
+}
+
+prebuilt_etc {
+    name: "factory_init.connectivity.rc",
+    src: "factory_init.connectivity.rc",
+    relative_install_path: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "factory_init.project.rc",
+    src: "factory_init.project.rc",
+    relative_install_path: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "factory_init.rc",
+    src: "factory_init.rc",
+    relative_install_path: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "meta_init.connectivity.common.rc",
+    src: "meta_init.connectivity.common.rc",
+    relative_install_path: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "meta_init.connectivity.rc",
+    src: "meta_init.connectivity.rc",
+    relative_install_path: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "meta_init.modem.rc",
+    src: "meta_init.modem.rc",
+    relative_install_path: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "meta_init.project.rc",
+    src: "meta_init.project.rc",
+    relative_install_path: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "meta_init.rc",
+    src: "meta_init.rc",
+    relative_install_path: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "meta_init.vendor.rc",
+    src: "meta_init.vendor.rc",
+    relative_install_path: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "multi_init.rc",
+    src: "multi_init.rc",
+    relative_install_path: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "ueventd.mtk.rc",
+    filename: "ueventd.rc",
+    src: "ueventd.mtk.rc",
+    vendor: true,
+}
+
+// System
+prebuilt_etc {
+    name: "meta_init.system.rc",
+    src: "meta_init.system.rc",
+    relative_install_path: "init/hw",
+    system_ext_specific: true,
+}
+
+prebuilt_etc {
+    name: "vendor_init_as_system.rc",
+    src: "vendor_init_as_system.rc",
+    relative_install_path: "init/hw",
+    system_ext_specific: true,
 }
