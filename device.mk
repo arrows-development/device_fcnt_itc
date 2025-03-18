@@ -216,8 +216,8 @@ PRODUCT_PACKAGES += \
     libkeystore-engine-wifi-hidl
 
 # Light
-PRODUCT_PACKAGES += \
-    android.hardware.lights-service.itc
+#PRODUCT_PACKAGES += \
+#    android.hardware.lights-service.itc
 
 # Media
 PRODUCT_COPY_FILES += \
