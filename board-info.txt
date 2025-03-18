@@ -1,1 +1,1 @@
-require board=yamato
+require board=itc|yamato
