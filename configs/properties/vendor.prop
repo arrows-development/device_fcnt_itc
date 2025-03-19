@@ -144,6 +144,10 @@ ro.opengles.version=196610
 # Incremental FS
 ro.incremental.enable=yes
 
+# Init
+ro.vendor.rc=/vendor/etc/init/hw/
+ro.vendor.init.sensor.rc=init.sensor_2_0.rc
+
 # Keystore
 ro.hardware.kmsetkey=trustonic
 
