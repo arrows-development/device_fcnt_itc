@@ -1,4 +1,4 @@
-service vendor.light /vendor/bin/hw/android.hardware.lights-service.cancunf
+service vendor.light /vendor/bin/hw/android.hardware.lights-service.itc
     class hal
     user system
     group system
