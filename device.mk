@@ -358,6 +358,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     PowerOffAlarm
 
+# Refresh Rate
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.surface_flinger.use_content_detection_for_refresh_rate=false
+
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@2.0-ScopedWakelock.vendor \
