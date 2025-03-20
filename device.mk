@@ -141,6 +141,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/felica/kddi/mfm.cfg:$(TARGET_COPY_OUT_PRODUCT)/etc/felica/mfm.cfg \
     $(LOCAL_PATH)/configs/felica/kddi/mfs.cfg:$(TARGET_COPY_OUT_PRODUCT)/etc/felica/mfs.cfg
 
+# Felica (docomo)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/felica/docomo/common.cfg:$(TARGET_COPY_OUT_PRODUCT)/etc/felica-docomo/common.cfg \
+    $(LOCAL_PATH)/configs/felica/docomo/mfm.cfg:$(TARGET_COPY_OUT_PRODUCT)/etc/felica-docomo/mfm.cfg \
+    $(LOCAL_PATH)/configs/felica/docomo/mfs.cfg:$(TARGET_COPY_OUT_PRODUCT)/etc/felica-docomo/mfs.cfg
+
 # FM Radio
 PRODUCT_PACKAGES += \
     FMRadio
@@ -282,7 +288,8 @@ PRODUCT_PACKAGES += \
 
 # Overlay (SKU)
 PRODUCT_PACKAGES += \
-    RegulatoryInfoOverlayFCG02
+    RegulatoryInfoOverlayFCG02 \
+    RegulatoryInfoOverlayF-52E
 
 # Permissions
 PRODUCT_COPY_FILES += \

@@ -1,0 +1,12 @@
+#
+# DVT-SKU2_6 variant specific props
+#
+
+ro.product.bootimage.model=F-52E
+ro.product.model=F-52E
+ro.product.odm.model=F-52E
+ro.product.product.model=F-52E
+ro.product.system.model=F-52E
+ro.product.system_ext.model=F-52E
+ro.product.vendor.model=F-52E
+ro.product.vendor_dlkm.model=F-52E

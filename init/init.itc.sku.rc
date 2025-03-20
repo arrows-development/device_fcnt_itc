@@ -2,3 +2,9 @@
 on property:ro.boot.product.hardware.sku="DVT-SKU1_5"
     setprop bluetooth.device.default_name "FCG02"
     setprop vendor.usb.product_string "FCG02"
+
+# docomo
+on property:ro.boot.product.hardware.sku="DVT-SKU2_6"
+    setprop bluetooth.device.default_name "F-52E"
+    setprop vendor.usb.product_string "F-52E"
+    mount none /product/etc/felica-docomo /product/etc/felica bind
