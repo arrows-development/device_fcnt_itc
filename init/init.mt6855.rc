@@ -1186,6 +1186,9 @@ service osi /system/bin/osi
     oneshot
     #seclabel u:r:osi:s0
 
+on post-fs-data
+    mkdir /data/vendor/mcRegistry 0775 system system
+
 on post-fs
     start logger
 
