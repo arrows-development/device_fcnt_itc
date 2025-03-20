@@ -276,6 +276,7 @@ PRODUCT_PACKAGES += \
     BesLoudnessOverlayItc \
     CarrierConfigOverlayItc \
     EsimOverlayItc \
+    EuiccGoogleOverlayItc \
     FrameworksResOverlayItc \
     NfcResOverlayItc \
     PowerOffAlarmOverlayItc \
