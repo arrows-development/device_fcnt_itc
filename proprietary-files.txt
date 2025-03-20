@@ -1520,7 +1520,6 @@ vendor/lib64/vendor.mediatek.hardware.neuropilot.agent@1.1.so
 vendor/lib64/vendor.mediatek.hardware.neuropilot.agent@1.2.so
 
 # NFC
-product/etc/libnfc-nci.conf:vendor/etc/libnfc-nci.conf
 vendor/etc/libese-nxp.conf
 vendor/lib64/libsn220u_fw.so
 
