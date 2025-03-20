@@ -1,0 +1,4 @@
+# KDDI
+on property:ro.boot.product.hardware.sku="DVT-SKU1_5"
+    setprop bluetooth.device.default_name "FCG02"
+    setprop vendor.usb.product_string "FCG02"

@@ -1,0 +1,12 @@
+#
+# DVT-SKU1_5 variant specific props
+#
+
+ro.product.bootimage.model=FCG02
+ro.product.model=FCG02
+ro.product.odm.model=FCG02
+ro.product.product.model=FCG02
+ro.product.system.model=FCG02
+ro.product.system_ext.model=FCG02
+ro.product.vendor.model=FCG02
+ro.product.vendor_dlkm.model=FCG02

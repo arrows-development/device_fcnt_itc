@@ -30,4 +30,4 @@ ril.subscription.types=RUIM
 ro.telephony.default_network=26,26
 ro.vendor.radio.imei.sv=22
 
-import /product/product.${ro.boot.hardware.sku}.prop
+import /product/product.${ro.boot.product.hardware.sku}.prop
