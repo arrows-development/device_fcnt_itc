@@ -520,6 +520,7 @@ vendor/lib64/mt6855/lib3a.log.so;SYMLINK=vendor/lib64/lib3a.log.so
 vendor/lib64/mt6855/lib3a.n3d3a.so;SYMLINK=vendor/lib64/lib3a.n3d3a.so
 vendor/lib64/mt6855/lib3a.sensors.color.so;SYMLINK=vendor/lib64/lib3a.sensors.color.so
 vendor/lib64/mt6855/lib3a.sensors.flicker.so;SYMLINK=vendor/lib64/lib3a.sensors.flicker.so
+vendor/lib64/mtkcam/mt6855/libmtkcam_streaminfo_plugin-p1stt.so;SYMLINK=vendor/lib64/mtkcam/libmtkcam_streaminfo_plugin-p1stt.so;DISABLE_DEPS
 vendor/lib64/libCamera_mtk000mipiraw_E2EHDR_Preview.so
 vendor/lib64/libCamera_mtk000mipiraw_E2EHDR_Video.so
 vendor/lib64/libCamera_mtk000mipiraw_Face_Capture.so
