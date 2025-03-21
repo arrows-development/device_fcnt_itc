@@ -492,8 +492,13 @@ vendor/lib64/libnativebeautyrenderer.so
 vendor/lib64/libNvEffectSdkCore.so
 vendor/lib64/libmtkcam_3rdparty.vidhance.so
 vendor/lib64/libvidhance.so
+vendor/lib64/hw/mt6855/android.hardware.camera.provider@2.6-impl-mediatek.so;SYMLINK=vendor/lib64/hw/android.hardware.camera.provider@2.6-impl-mediatek.so;DISABLE_DEPS
 vendor/lib64/hw/mt6855/vendor.mediatek.hardware.camera.atms@1.0-impl.so;SYMLINK=vendor/lib64/hw/vendor.mediatek.hardware.camera.atms@1.0-impl.so;DISABLE_DEPS
 vendor/lib64/hw/mt6855/vendor.mediatek.hardware.camera.bgservice@1.1-impl.so;SYMLINK=vendor/lib64/hw/vendor.mediatek.hardware.camera.bgservice@1.1-impl.so;DISABLE_DEPS
+vendor/lib64/hw/mt6855/vendor.mediatek.hardware.camera.ccap@1.0-impl.so;SYMLINK=vendor/lib64/hw/vendor.mediatek.hardware.camera.ccap@1.0-impl.so;DISABLE_DEPS
+vendor/lib64/hw/mt6855/vendor.mediatek.hardware.camera.isphal@1.0-impl.so;SYMLINK=vendor/lib64/hw/vendor.mediatek.hardware.camera.isphal@1.0-impl.so;DISABLE_DEPS
+vendor/lib64/hw/mt6855/vendor.mediatek.hardware.camera.isphal@1.1-impl.so;SYMLINK=vendor/lib64/hw/vendor.mediatek.hardware.camera.isphal@1.1-impl.so;DISABLE_DEPS
+vendor/lib64/hw/mt6855/vendor.mediatek.hardware.camera.lomoeffect@1.0-impl.so;SYMLINK=vendor/lib64/hw/vendor.mediatek.hardware.camera.lomoeffect@1.0-impl.so;DISABLE_DEPS
 vendor/lib64/mt6855/lib3a.ae.core.so;SYMLINK=vendor/lib64/lib3a.ae.core.so
 vendor/lib64/mt6855/lib3a.ae.so;SYMLINK=vendor/lib64/lib3a.ae.so
 vendor/lib64/mt6855/lib3a.ae.stat.so;SYMLINK=vendor/lib64/lib3a.ae.stat.so
