@@ -187,6 +187,7 @@ vendor/bin/hw/android.hardware.bluetooth@1.1-service-mediatek
 vendor/bin/autobt
 vendor/bin/bt_dump
 vendor/etc/init/android.hardware.bluetooth@1.1-service-mediatek.rc
+vendor/etc/init/init.bt_drv.rc
 vendor/lib64/hw/android.hardware.bluetooth@1.1-impl-mediatek.so
 vendor/lib64/hw/vendor.mediatek.hardware.bluetooth.audio@2.2-impl.so
 vendor/lib64/libbluetooth_audio_session_mediatek.so
@@ -1094,6 +1095,9 @@ vendor/firmware/soc_fm_v1_coeff.bin
 vendor/firmware/soc_fm_v1_patch.bin
 vendor/firmware/wifi.cfg
 
+# FM
+vendor/etc/init/init.fmradio_drv.rc
+
 # GPS
 vendor/bin/hw/android.hardware.gnss-service.mediatek
 vendor/bin/mnld
@@ -1520,6 +1524,8 @@ vendor/lib64/vendor.mediatek.hardware.neuropilot.agent@1.1.so
 vendor/lib64/vendor.mediatek.hardware.neuropilot.agent@1.2.so
 
 # NFC
+vendor/etc/init/init.fcnthal.nfc.rc
+vendor/etc/init/init.fcnthal.se.rc
 vendor/etc/libese-nxp.conf
 vendor/lib64/libsn220u_fw.so
 
@@ -1729,6 +1735,8 @@ vendor/bin/wifi_dump
 vendor/bin/wlan_assistant
 vendor/bin/wmt_launcher
 vendor/bin/wmt_loader
+vendor/etc/init/init.wlan_drv.rc
+vendor/etc/init/init.wmt_drv.rc
 vendor/etc/init/wlan_assistant.rc
 vendor/lib/meta_wifi_data.so
 vendor/lib64/libwifi-hal.so:vendor/lib64/libwifi-hal-mtk.so;FIX_SONAME
