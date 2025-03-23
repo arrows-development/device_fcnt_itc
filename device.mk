@@ -421,9 +421,8 @@ PRODUCT_PACKAGES += \
     android.hardware.usb@1.3.vendor \
 
 # Vibrator
-$(call soong_config_set,mediatek_vibrator,supports_effects,true)
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator-service.mediatek
+    vendor.qti.hardware.vibrator.service.itc
 
 # VNDK
 PRODUCT_PACKAGES += \
