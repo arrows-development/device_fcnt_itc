@@ -1455,10 +1455,6 @@ vendor/lib64/se_extn_client.so
 # Modules
 vendor/etc/init.insmod.mt6855.cfg
 
-# Motorola
-vendor/bin/hardware_revisions.sh|4f201c60b552db7a0ddd8e1284f01d8b630380cc
-vendor/bin/init.insmod.sh
-
 # Native public libraries
 vendor/etc/public.libraries.txt
 
