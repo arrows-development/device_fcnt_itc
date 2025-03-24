@@ -31,6 +31,18 @@ genfscon sysfs /devices/platform/charger/power_supply/mtk-master-charger u:objec
 genfscon sysfs /class/touchscreen u:object_r:vendor_sysfs_touchpanel:s0
 genfscon sysfs /devices/virtual/touchscreen u:object_r:vendor_sysfs_touchpanel:s0
 
+# Vibrator
+genfscon sysfs /devices/platform/11db2000.i2c/i2c-7/7-005a/leds/aw_vibrator/activate        u:object_r:sysfs_vibrator:s0
+genfscon sysfs /devices/platform/11db2000.i2c/i2c-7/7-005a/leds/aw_vibrator/brightness      u:object_r:sysfs_vibrator:s0
+genfscon sysfs /devices/platform/11db2000.i2c/i2c-7/7-005a/leds/aw_vibrator/cam_status      u:object_r:sysfs_vibrator:s0
+genfscon sysfs /devices/platform/11db2000.i2c/i2c-7/7-005a/leds/aw_vibrator/duration        u:object_r:sysfs_vibrator:s0
+genfscon sysfs /devices/platform/11db2000.i2c/i2c-7/7-005a/leds/aw_vibrator/f0_save         u:object_r:sysfs_vibrator:s0
+genfscon sysfs /devices/platform/11db2000.i2c/i2c-7/7-005a/leds/aw_vibrator/gain            u:object_r:sysfs_vibrator:s0
+genfscon sysfs /devices/platform/11db2000.i2c/i2c-7/7-005a/leds/aw_vibrator/index           u:object_r:sysfs_vibrator:s0
+genfscon sysfs /devices/platform/11db2000.i2c/i2c-7/7-005a/leds/aw_vibrator/loop            u:object_r:sysfs_vibrator:s0
+genfscon sysfs /devices/platform/11db2000.i2c/i2c-7/7-005a/leds/aw_vibrator/state           u:object_r:sysfs_vibrator:s0
+genfscon sysfs /devices/platform/11db2000.i2c/i2c-7/7-005a/leds/aw_vibrator/trigger         u:object_r:sysfs_vibrator:s0
+
 # Wakeup
 genfscon sysfs /devices/platform/11b20000.i2c/i2c-5/5-0034/11b20000.i2c:mt6375@34:mtk_gauge/power_supply/battery/wakeup36 u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/11ed4000.i2c/i2c-9/9-0065/power_supply/cp-standalone/wakeup52                      u:object_r:sysfs_wakeup:s0
