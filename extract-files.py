@@ -77,6 +77,8 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('1.1', '1.2')
         .regex_replace('@1.0', '@1.2')
         .regex_replace('default9', 'default'),
+    'vendor/bin/hw/mtkfusionrild': blob_fixup()
+        .add_needed('libutils-v32.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
