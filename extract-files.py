@@ -85,6 +85,8 @@ blob_fixups: blob_fixups_user_type = {
      'vendor/bin/hw/android.hardware.neuralnetworks@1.3-service-mtk-neuron',
      'vendor/bin/hw/android.hardware.usb@1.2-service-mediatekv2'): blob_fixup()
         .add_needed('libbase_shim.so'),
+    ('vendor/lib64/mt6855/libcam.hal3a.v3.so', 'vendor/lib64/hw/hwcomposer.mtk_common.so'): blob_fixup()
+        .add_needed('libprocessgroup_shim.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
