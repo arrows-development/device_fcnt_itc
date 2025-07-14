@@ -25,5 +25,5 @@ PRODUCT_GMS_CLIENTID_BASE := android-fcnt
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     DeviceName=itc \
-    BuildDesc="sys_mssi_yamato-user-14-V10RK38E-yamato.20240612.112457-release-keys" \
-    BuildFingerprint=FCNT/ITC/ITC:14/V10RK38E/ITC.20240612:user/release-keys
+    BuildDesc="sys_mssi_yamato-user 15 V32RK49A FCG02.20250623 release-keys" \
+    BuildFingerprint=FCNT/ITC/ITC:15/V32RK49A/ITC.20250623:user/release-keys

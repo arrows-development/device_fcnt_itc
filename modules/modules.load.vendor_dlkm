@@ -27,8 +27,6 @@ c2k_usb_f_via_ets.ko
 c2k_usb_f_via_gps.ko
 c2k_usb_f_via_modem.ko
 c2k_usb_f_via_pcv.ko
-asix.ko
-ax88179_178a.ko
 net1080.ko
 zaurus.ko
 pegasus.ko
@@ -43,6 +41,7 @@ mtk_dynamic_loading_throttling.ko
 mtk_bp_thl.ko
 mtk_md_power_throttling.ko
 mtk_cpu_power_throttling.ko
+mtk_gpu_power_throttling.ko
 mtk_pbm.ko
 mtk_mdpm.ko
 reboot-mode.ko

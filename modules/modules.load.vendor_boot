@@ -75,6 +75,7 @@ panel-alpha-jdi-nt36672e-cphy-vdo.ko
 panel-truly-nt35595-cmd.ko
 panel-lce-jd9365t-vdo-60hz.ko
 panel-lide-gc7202m-vdo-60hz.ko
+panel-nt37801-cmd-fhd-10bit.ko
 mediatek-drm.ko
 aee_rs.ko
 mmprofile.ko
@@ -150,6 +151,7 @@ mtk-dvfsrc-helper.ko
 mtk-dvfsrc-devfreq.ko
 clk-chk-mt6855.ko
 pmic_lbat_service.ko
+pmic_lvsys_notify.ko
 reset-ti-syscon.ko
 mtk_slbc.ko
 vcp_status.ko

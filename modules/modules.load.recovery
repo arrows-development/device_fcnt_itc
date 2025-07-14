@@ -77,6 +77,7 @@ panel-alpha-jdi-nt36672e-cphy-vdo.ko
 panel-truly-nt35595-cmd.ko
 panel-lce-jd9365t-vdo-60hz.ko
 panel-lide-gc7202m-vdo-60hz.ko
+panel-nt37801-cmd-fhd-10bit.ko
 mediatek-drm.ko
 aee_rs.ko
 mmprofile.ko
@@ -153,6 +154,7 @@ clk-chk-mt6855.ko
 mtk_battery_oc_throttling.ko
 mtk_low_battery_throttling.ko
 pmic_lbat_service.ko
+pmic_lvsys_notify.ko
 mtk_dynamic_loading_throttling.ko
 mtk_pbm.ko
 mtk_mdpm.ko

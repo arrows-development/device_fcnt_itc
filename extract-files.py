@@ -37,8 +37,8 @@ lib_fixups: lib_fixups_user_type = {
 blob_fixups: blob_fixups_user_type = {
     'vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service.itc.rc': blob_fixup()
         .regex_replace('2.1-service', '2.1-service.itc'),
-    'system_ext/priv-app/ImsService/ImsService.apk': blob_fixup()
-        .apktool_patch('ims-patches'),
+    #'system_ext/priv-app/ImsService/ImsService.apk': blob_fixup()
+    #    .apktool_patch('ims-patches'),
     ('system_ext/etc/init/init.vtservice.rc', 'vendor/etc/init/android.hardware.neuralnetworks-shim-service-mtk.rc'): blob_fixup()
         .regex_replace('start', 'enable'),
     'system_ext/lib64/libsource.so': blob_fixup()
