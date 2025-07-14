@@ -357,7 +357,8 @@ int LedVibratorDevice::write_value(const char *file, const char *value) {
 
     if (!strcmp(file, LED_DEVICE "/gain")) {
         val = mLevel * strtoul(value, NULL, 0) / 3;
-	value = std::to_string(val).c_str();
+        std::string tmp = std::to_string(val);
+        value = tmp.c_str();
     }
 
     fd = TEMP_FAILURE_RETRY(open(file, O_WRONLY));
